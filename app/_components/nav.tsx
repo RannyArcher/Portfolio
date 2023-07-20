@@ -1,6 +1,7 @@
 "use client";
 import {
   Box,
+  Container,
   Flex,
   Menu,
   MenuButton,
@@ -23,101 +24,111 @@ const LINKS = Object.entries(getPagenameByPath);
 
 export default function Nav() {
   return (
-    <Flex
-      as={motion.nav}
-      w="100%"
-      p="0 25px"
-      initial={{ y: -80 }}
+    <motion.nav
+      style={{ position: "fixed", top: 0, left: 0, width: "100%" }}
+      initial={{ y: -100 }}
       animate={{ y: 0 }}
-      top="0"
-      left="0"
-      h="80px"
-      pos="fixed"
-      justifyContent="space-between"
-      alignItems="center"
+      transition={{ ease: "linear", delay: .25 }}
     >
-      <Link
-        href="/"
-        _hover={{
-          textDecor: "none",
-        }}
-        fontWeight="bold"
-        fontSize="xl"
+      <Container
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        h="80px"
+        maxW="container.lg"
       >
-        IMRANE
-      </Link>
-      <Box
-        as={motion.div}
-        layout
-        display={{ base: "none", md: "flex" }}
-        flexDir="row"
-        gap="10px"
-      >
-        {LINKS.map(([linkPath, pageName]) => {
-          let activePath = usePathname();
-          let isActive = activePath === linkPath;
-          return (
-            <Flex
-              key={linkPath}
-              pos="relative"
-              justify="center"
-              alignItems="center"
-              w="80px"
-            >
-              <Link
-                href={linkPath}
-                _hover={{
-                  textDecor: "none",
-                }}
-                textAlign="center"
-                textTransform="capitalize"
-              >
-                {pageName}
-              </Link>
-
-              {isActive &&
-                (
-                  <Box
-                    as={motion.div}
-                    layoutId="underline"
-                    pos="absolute"
-                    w="100%"
-                    h="2px"
-                    bg="black"
-                    bottom="-10px"
-                    right="0px"
-                  />
-                )}
-            </Flex>
-          );
-        })}
-      </Box>
-      <Menu>
-        <MenuButton display={{ md: "none" }}>
-          <HamburgerIcon fontSize="2xl" />
-        </MenuButton>
-        <MenuList>
+        <Link
+          href="/"
+          _hover={{
+            textDecor: "none",
+          }}
+          fontWeight="bold"
+          fontSize="xl"
+          display="flex"
+          flexDir="column"
+          lineHeight="none"
+        >
+          IMRANE
+          <Flex
+            fontSize="xs"
+            justifyContent="space-between"
+          >
+            {"AABBOU".split("").map((char) => <span>{char}</span>)}
+          </Flex>
+        </Link>
+        <Box
+          as={motion.div}
+          layout
+          display={{ base: "none", md: "flex" }}
+          flexDir="row"
+          gap="10px"
+        >
           {LINKS.map(([linkPath, pageName]) => {
             let activePath = usePathname();
             let isActive = activePath === linkPath;
-
             return (
-              <MenuItem
+              <Flex
                 key={linkPath}
-                borderLeft={isActive ? "black solid" : ""}
+                pos="relative"
+                justify="center"
+                alignItems="center"
+                w="80px"
               >
                 <Link
                   href={linkPath}
-                  _hover={{ textDecor: "none" }}
+                  _hover={{
+                    textDecor: "none",
+                  }}
+                  textAlign="center"
                   textTransform="capitalize"
                 >
                   {pageName}
                 </Link>
-              </MenuItem>
+
+                {isActive &&
+                  (
+                    <Box
+                      as={motion.div}
+                      layoutId="underline"
+                      pos="absolute"
+                      w="100%"
+                      h="2px"
+                      bg="black"
+                      bottom="-10px"
+                      right="0px"
+                    />
+                  )}
+              </Flex>
             );
           })}
-        </MenuList>
-      </Menu>
-    </Flex>
+        </Box>
+        <Menu>
+          <MenuButton display={{ md: "none" }}>
+            <HamburgerIcon fontSize="2xl" />
+          </MenuButton>
+          <MenuList>
+            {LINKS.map(([linkPath, pageName]) => {
+              let activePath = usePathname();
+              let isActive = activePath === linkPath;
+
+              return (
+                <MenuItem
+                  key={linkPath}
+                  borderLeft={isActive ? "black solid" : ""}
+                >
+                  <Link
+                    href={linkPath}
+                    _hover={{ textDecor: "none" }}
+                    textTransform="capitalize"
+                  >
+                    {pageName}
+                  </Link>
+                </MenuItem>
+              );
+            })}
+          </MenuList>
+        </Menu>
+      </Container>
+    </motion.nav>
   );
 }
