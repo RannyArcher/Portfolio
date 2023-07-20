@@ -98,9 +98,13 @@ export default function Nav() {
         </MenuButton>
         <MenuList>
           {LINKS.map(([linkPath, pageName]) => {
+            let activePath = usePathname();
+            let isActive = activePath === linkPath;
+
             return (
               <MenuItem
                 key={linkPath}
+                borderLeft={isActive ? "black solid" : ""}
               >
                 <Link
                   href={linkPath}
