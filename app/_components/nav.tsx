@@ -12,6 +12,7 @@ import { Link } from "@chakra-ui/next-js";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { useId } from "react";
 
 const getPagenameByPath = {
   "/": "portfolio",
@@ -53,7 +54,8 @@ export default function Nav() {
             fontSize="xs"
             justifyContent="space-between"
           >
-            {"AABBOU".split("").map((char) => <span>{char}</span>)}
+            {"AABBOU".split("").map((char) => <span key={useId()}>{char}
+            </span>)}
           </Flex>
         </Link>
         <Box
