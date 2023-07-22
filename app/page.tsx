@@ -4,10 +4,10 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion, Variants } from "framer-motion";
 
 const pageVariants: Variants = {
-  from: {
+  transparent: {
     opacity: 0,
   },
-  to: {
+  shown: {
     opacity: 1,
   },
 };
@@ -17,9 +17,8 @@ export default function Page() {
     <Flex
       as={motion.div}
       variants={pageVariants}
-      initial="from"
-      exit="from"
-      animate="to"
+      initial="transparent"
+      animate="shown"
       h="100vh"
       minH="2xl"
       maxH="3xl"
