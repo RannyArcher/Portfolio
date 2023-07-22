@@ -115,16 +115,15 @@ export default function Nav() {
 
               return (
                 <MenuItem
+                  as={Link}
                   key={linkPath}
+                  _hover={{ textDecor: "none" }}
+                  textTransform="capitalize"
+                  href={linkPath}
                   borderLeft={isActive ? "black solid" : ""}
+                  pos="relative"
                 >
-                  <Link
-                    href={linkPath}
-                    _hover={{ textDecor: "none" }}
-                    textTransform="capitalize"
-                  >
-                    {pageName}
-                  </Link>
+                  {pageName}
                 </MenuItem>
               );
             })}
