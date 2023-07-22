@@ -1,16 +1,8 @@
 "use client";
 import { Image, Link } from "@chakra-ui/next-js";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-import { motion, Variants } from "framer-motion";
-
-const pageVariants: Variants = {
-  transparent: {
-    opacity: 0,
-  },
-  shown: {
-    opacity: 1,
-  },
-};
+import { motion } from "framer-motion";
+import { pageVariants } from "./lib/sharedVariants";
 
 export default function Page() {
   return (
