@@ -1,10 +1,10 @@
 import type { Variants } from "framer-motion";
 
 export const pageVariants: Variants = {
-  transparent: {
+  hidden: {
     opacity: 0,
   },
-  shown: {
+  visible: {
     opacity: 1,
   },
 };

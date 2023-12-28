@@ -9,8 +9,8 @@ export default function Page() {
     <Flex
       as={motion.div}
       variants={pageVariants}
-      initial="transparent"
-      animate="shown"
+      initial="hidden"
+      animate="visible"
       h="100vh"
       minH="2xl"
       maxH="3xl"
